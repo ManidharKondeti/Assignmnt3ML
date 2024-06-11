@@ -14,10 +14,11 @@ print("\n Basic statistical description:\n", description)
 
 # 3: Check for null values and replace with mean
 # Check if the data has null values.
-print('Are there any null values present in data: ', df.isnull().values.any())
+print('\nAre there any null values present in data: ', df.isnull().values.any())
 # Replace the null values with the mean
-df.fillna(df.mean(), inplace=True)
-print('Are there any null values after using fillna: ', df.isnull().values.any())
+if df.isnull().values.any():
+    df.fillna(df.mean(), inplace=True)
+    print('Are there any null values after using fillna: ', df.isnull().values.any())
 
 # 4: Aggregate data using min, max, count, and mean
 aggregated_data = df[['Calories', 'Pulse']].agg(['min', 'max', 'count', 'mean'])
